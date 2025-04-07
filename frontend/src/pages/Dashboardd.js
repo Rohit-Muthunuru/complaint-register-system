@@ -13,7 +13,7 @@ function Dashboardd() {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await fetch('http://localhost:8000/complaints/categories'); // Update the API URL as needed
+        const response = await fetch('https://complaint-register-system-backend.onrender.com/complaints/categories'); // Update the API URL as needed
         const data = await response.json();
         setCategories(data);
       } catch (error) {
@@ -48,7 +48,7 @@ function Dashboardd() {
   }
 
   const saveCmplnt = (e) => {
-    axios.post("http://localhost:8000/complaints/create", cmplntData).then(function (data) {
+    axios.post("https://complaint-register-system-backend.onrender.com/complaints/create", cmplntData).then(function (data) {
       console.log("cmplnt created successfully")
       navigate("/user/complaintlist")
     }).catch(function (err) {
@@ -59,7 +59,7 @@ function Dashboardd() {
     console.log(e)
     const formData = new FormData()
     formData.append("cmplntimage", e.target.files[0])
-    axios.post("http://localhost:8000/complaints/imageupload", formData).then(function (data) {
+    axios.post("https://complaint-register-system-backend.onrender.com/complaints/imageupload", formData).then(function (data) {
       console.log("image uploaded successfully")
       setcmplntData((prev) => {
         return {
