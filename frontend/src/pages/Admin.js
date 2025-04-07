@@ -111,7 +111,7 @@ function AdminComplaintList() {
                                 <div className="row">
                                     <div className="col-md-4">
                                         <div className="cmplnt-image">
-                                            <img src={`http://localhost:8000/uploads/${cmplnt.image}`} alt="Description" style={{ height: '200px' }} />
+                                            <img src={`https://complaint-register-system-backend.onrender.com/uploads/${cmplnt.image}`} alt="Description" style={{ height: '200px' }} />
                                         </div>
 
                                     </div>
@@ -119,7 +119,7 @@ function AdminComplaintList() {
                                         <h2>{cmplnt.title}</h2>
                                         <p>{cmplnt.content}</p>
                                         <div className="row">
-                                            <p>Author:<span className="badge text-bg-warning">{cmplnt.author}</span></p>
+                                            <p>Address:<span className="badge text-bg-warning">{cmplnt.author}</span></p>
                                             <p>Category:<span className="badge text-bg-danger">{cmplnt.category}</span></p>
                                         </div>
 
