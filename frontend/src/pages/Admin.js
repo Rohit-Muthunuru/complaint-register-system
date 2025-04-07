@@ -12,7 +12,7 @@ function AdminComplaintList() {
         getAllCmplnts()
     }, [])
     const getAllCmplnts = () => {
-        axios.get("http://localhost:8000/complaints/all").then(function (res) {
+        axios.get("https://complaint-register-system-backend.onrender.com/complaints/all").then(function (res) {
             setCmplnts(res.data)
         }).catch(function (err) {
             console.log(err)
@@ -22,7 +22,7 @@ function AdminComplaintList() {
         navigate("/login")
     }
     const deleteCmplnt = (e, cmplnt) => {
-        axios.delete(`http://localhost:8000/complaints/deleteCmplnt/${cmplnt._id}`).then(function (res) {
+        axios.delete(`https://complaint-register-system-backend.onrender.com/complaints/deleteCmplnt/${cmplnt._id}`).then(function (res) {
             getAllCmplnts()
         }).catch(function (err) {
             console.log(err)
@@ -30,7 +30,7 @@ function AdminComplaintList() {
     }
 
     const solveIssue = (e, cmplnt) => {
-        axios.put(`http://localhost:8000/complaints/status/${cmplnt._id}`, { status: "solved" }).then(function (data) {
+        axios.put(`https://complaint-register-system-backend.onrender.com/complaints/status/${cmplnt._id}`, { status: "solved" }).then(function (data) {
             console.log("cmplnt updated successfully")
             getAllCmplnts();
         }).catch(function (err) {
@@ -44,7 +44,7 @@ function AdminComplaintList() {
     const searchCmplnts = (e) => {
         e.preventDefault();
         if (searchKey !== "") {
-            axios.get(`http://localhost:8000/complaints/searchByTitle/${searchKey}`).then(function (res) {
+            axios.get(`https://complaint-register-system-backend.onrender.com/complaints/searchByTitle/${searchKey}`).then(function (res) {
                 setCmplnts(res.data)
             }).catch(function (err) {
                 console.log(err)
@@ -56,7 +56,7 @@ function AdminComplaintList() {
     const getByCategory = (e, category, index) => {
         setSelectedCategoryIndex(index)
         console.log(category)
-        axios.get(`http://localhost:8000/complaints/searchByCategory/${category}`).then(function (res) {
+        axios.get(`https://complaint-register-system-backend.onrender.com/complaints/searchByCategory/${category}`).then(function (res) {
             setCmplnts(res.data)
         }).catch(function (err) {
             console.log(err)
