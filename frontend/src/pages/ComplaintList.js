@@ -14,7 +14,7 @@ function ComplaintList() {
   }, [])
   const fetchCategories = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/complaints/categories");
+      const response = await axios.get("https://complaint-register-system-backend.onrender.com/complaints/categories");
       setCategories(["All", "Cybercrime", "Fraud", "Theft"]);
       // Add "All" and category names
     } catch (error) {
@@ -29,7 +29,7 @@ function ComplaintList() {
     navigate("/user/editcomplaint/" + cmplnt._id)
   }
   const getAllCmplnts = () => {
-    // axios.get("http://localhost:8000/complaints/all").then(function (res) {
+    // axios.get("https://complaint-register-system-backend.onrender.com/complaints/all").then(function (res) {
     //   setCmplnts(res.data)
     // }).catch(function (err) {
     //   console.log(err)
@@ -42,7 +42,7 @@ function ComplaintList() {
     }
     console.log(userId)
 
-    axios.get(`http://localhost:8000/complaints/user/${userId}`)
+    axios.get(`https://complaint-register-system-backend.onrender.com/complaints/user/${userId}`)
       .then((res) => {
         console.log("Complaints received:", res.data);
         setCmplnts(res.data);
@@ -66,7 +66,7 @@ function ComplaintList() {
     e.preventDefault(); // Prevents default action (if any)
   
     try {
-      await axios.delete(`http://localhost:8000/complaints/deleteCmplnt/${cmplnt._id}`);
+      await axios.delete(`https://complaint-register-system-backend.onrender.com/complaints/deleteCmplnt/${cmplnt._id}`);
       
       // Update state by filtering out deleted complaint
       setCmplnts(prevCmplnts => prevCmplnts.filter(item => item._id !== cmplnt._id));
@@ -83,7 +83,7 @@ function ComplaintList() {
   const searchCmplnts = (e) => {
     e.preventDefault();
     if (searchKey !== "") {
-      axios.get(`http://localhost:8000/complaints/searchByTitle/${searchKey}`).then(function (res) {
+      axios.get(`https://complaint-register-system-backend.onrender.com/complaints/searchByTitle/${searchKey}`).then(function (res) {
         setCmplnts(res.data)
       }).catch(function (err) {
         console.log(err)
@@ -116,7 +116,7 @@ function ComplaintList() {
         getAllCmplnts();
     } else {
         axios
-            .get(`http://localhost:8000/complaints/user/${userId}/category/${category.toLowerCase()}`)
+            .get(`https://complaint-register-system-backend.onrender.com/complaints/user/${userId}/category/${category.toLowerCase()}`)
             .then((res) => {
                 console.log("Filtered Complaints:", res.data);
                 setCmplnts(res.data);
