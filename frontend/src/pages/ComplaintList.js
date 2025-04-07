@@ -203,7 +203,7 @@ function ComplaintList() {
                   <div className="row g-0">
                     <div className="col-md-4">
                       <img
-                        src={`http://localhost:8000/uploads/${cmplnt.image}`}
+                        src={`https://complaint-register-system-backend.onrender.com/uploads/${cmplnt.image}`}
                         alt="Description"
                         className="img-fluid rounded-start"
                         style={{ height: "100%", objectFit: "cover" }}
