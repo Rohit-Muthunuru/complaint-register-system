@@ -27,7 +27,7 @@ function Signup() {
         const data = {
             email,password,role,name 
         }
-        axios.post("http://localhost:8000/auth/signup", data).then(function (data) {
+        axios.post("https://complaint-register-system-backend.onrender.com/auth/signup", data).then(function (data) {
             console.log("signup successfull")
             navigate("/login")
 
