@@ -9,7 +9,7 @@ function EditCmplnt() {
     const navigate = useNavigate()
     console.log(params)
     useEffect(() => {
-        axios.get(`http://localhost:8000/complaints/cmplntById/${params.id}`).then(function (res) {
+        axios.get(`https://complaint-register-system-backend.onrender.com/complaints/cmplntById/${params.id}`).then(function (res) {
             console.log(res)
             setCmplntData((prev) => {
                 return {
@@ -34,7 +34,7 @@ function EditCmplnt() {
         })
     }
     const saveEditedCmplnt = (e) => {
-        axios.put(`http://localhost:8000/complaints/edit/${params.id}`, cmplntData).then(function (data) {
+        axios.put(`https://complaint-register-system-backend.onrender.com/complaints/edit/${params.id}`, cmplntData).then(function (data) {
             console.log("cmplnt updated successfully")
             navigate("/user/complaintlist")
         }).catch(function (err) {
