@@ -129,7 +129,7 @@ function AdminComplaintList() {
                                     <div className="col-md-2 d-flex flex-column justify-content-start align-items-start">
                                         <button className="btn btn-sm btn-danger mb-2" onClick={(e) => deleteCmplnt(e, cmplnt)}>Delete</button>
 
-                                        {cmplnt.status === "open" && <button className="btn btn-sm btn-info mt-4" style={{ marginTop: "40px" }} onClick={(e) => solveIssue(e, cmplnt)}>Solve the Issue </button>}
+                                         <button className="btn btn-sm btn-info mt-4" style={{ marginTop: "40px" }} onClick={(e) => solveIssue(e, cmplnt)}>Solve the Issue </button>
                                         <p>Status:<span className="badge text-bg-warning">{cmplnt.status}</span></p>
                                     </div>
 

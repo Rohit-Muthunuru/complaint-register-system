@@ -1,22 +1,38 @@
-const express = require("express")
-const fileUpload = require("express-fileupload") 
 
-const mongoose = require("mongoose")
-const cors = require("cors")
-const app = express()
-const complaintRoutes = require("./routes/complaint")
-const authRoutes = require("./routes/Auth")
+const express = require("express");
+const fileUpload = require("express-fileupload");
+const mongoose = require("mongoose");
+const cors = require("cors");
+const dotenv = require("dotenv");
 
-mongoose.connect("mongodb://127.0.0.1:27017/complaint-register-system")
+const complaintRoutes = require("./routes/complaint");
+const authRoutes = require("./routes/Auth");
 
-app.use(cors())
-app.use(express.json())
-app.use(fileUpload())
+dotenv.config(); // Load .env values
 
-app.use("/uploads",express.static('uploads'))
-app.use("/complaints",complaintRoutes)
-app.use("/auth",authRoutes)
+const app = express();
+const PORT = process.env.PORT || 8000;
 
-app.listen(8000,function(){
-   console.log("server is running on port 8000")
+// Connect to MongoDB using the URI from .env
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 })
+.then(() => console.log('✅ MongoDB connected'))
+.catch(err => console.error('❌ MongoDB connection error:', err));
+
+app.use(cors());
+app.use(express.json());
+app.use(fileUpload());
+
+// Static folder for uploads
+app.use("/uploads", express.static('uploads'));
+
+// API Routes
+app.use("/complaints", complaintRoutes);
+app.use("/auth", authRoutes);
+
+// Start server
+app.listen(PORT, () => {
+  console.log(`🚀 Server running on http://localhost:${PORT}`);
+});

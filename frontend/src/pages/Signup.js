@@ -7,6 +7,7 @@ function Signup() {
     const [email, setemail] = useState("")
     const [password, setpassword] = useState("")
     const [role,setrole] = useState("")
+    const [name,setname]= useState("")
 
     const onEmailChange = (e) => {
         setemail(e.target.value)
@@ -17,15 +18,18 @@ function Signup() {
     const onRoleChange = (e)=>{
         setrole(e.target.value)
     }
+    const onNameChange=(e)=>{
+      setname(e.target.value)
+    }
     const signup = (e) => {
 
         e.preventDefault();
         const data = {
-            email,password,role
+            email,password,role,name 
         }
         axios.post("http://localhost:8000/auth/signup", data).then(function (data) {
             console.log("signup successfull")
-            navigate("/")
+            navigate("/login")
 
         }).catch(function (err) {
             console.log(err)
@@ -33,7 +37,7 @@ function Signup() {
 
     }
     return (
-        <div className="d-flex align-items-center justify-content-center vh-100" style={{ backgroundColor: "#f8f9fa" }}>
+        <div className="d-flex align-items-center justify-content-center vh-100" style={{ backgroundColor: "#05152b" }}>
         <div className="card shadow-lg p-4" style={{ maxWidth: "400px", width: "100%" }}>
           <div className="card-body">
             <h1 className="card-title text-center mb-4">Signup</h1>
@@ -65,6 +69,16 @@ function Signup() {
                   className="form-control"
                   value={role}
                   onChange={onRoleChange}
+                  required
+                />
+              </div>
+              <div className="mb-3">
+                <label className="form-label">Name</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  value={name}
+                  onChange={onNameChange}
                   required
                 />
               </div>

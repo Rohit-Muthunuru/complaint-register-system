@@ -1,8 +1,23 @@
 // src/components/NavbarAdmin.js
 import React from "react";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const NavbarAdmin = () => {
+  const [name, setName] = useState(localStorage.getItem("name") || "");
+  
+    useEffect(() => {
+      const handleStorageChange = () => {
+        setName(localStorage.getItem("name") || ""); // Update state when localStorage changes
+      };
+  
+      window.addEventListener("storage", handleStorageChange);
+  
+      return () => {
+        window.removeEventListener("storage", handleStorageChange);
+      };
+    }, []);
+  
   const handleLogout = () => {
     localStorage.clear();
     window.location.href = "/login";
@@ -45,6 +60,9 @@ const NavbarAdmin = () => {
             </Link>
           </li>
         </ul>
+        <div className="mx-auto text-center">
+            <h3 className="m-0" style={{ fontFamily: "cursive", fontSize: "22px", fontWeight: "bold", color: "white" }}>Welcome {name} !!</h3>
+          </div>
 
         {/* Logout Button */}
         <button
