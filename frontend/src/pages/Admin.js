@@ -5,7 +5,7 @@ import NavbarAdmin from "./NavbarAdmin"
 function AdminComplaintList() {
     const [cmplnts, setCmplnts] = useState([])
     const [searchKey, setsearchKey] = useState("")
-    const [categories, setCategories] = useState(["All", "Tech", "Science", "Bio"])
+    const [categories, setCategories] = useState(["All", "Cybercrime", "Fraud", "Theft"])
     const [selectedCategoryIndex, setSelectedCategoryIndex] = useState(0)
     const navigate = useNavigate();
     useEffect(() => {
